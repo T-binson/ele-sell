@@ -62,7 +62,7 @@ const ERR_OK = 0
 
 export default {
   name: 'rate',
-  data() {
+  data () {
     return {
       ratings: [],
       selectType: ALL,
@@ -72,19 +72,19 @@ export default {
   props: {
     seller: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     },
     shoppingCart: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     },
     emptyFoods: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     },
@@ -103,13 +103,13 @@ export default {
     RatingSelect
   },
   methods: {
-    select(type) {
+    select (type) {
       this.selectType = type
       this.$nextTick(() => {
         this.scroll.refresh()
       })
     },
-    toggleContent(onlyContent) {
+    toggleContent (onlyContent) {
       this.onlyContent = !onlyContent
       this.$nextTick(() => {
         this.$nextTick(() => {
@@ -118,7 +118,7 @@ export default {
       })
     }
   },
-  created() {
+  created () {
     this.$http.get('/api/ratings').then(response => {
       if (response.body.errno === ERR_OK) {
         this.ratings = response.body.data
@@ -137,7 +137,7 @@ export default {
     })
   },
   filters: {
-    formatTime(time) {
+    formatTime (time) {
       let date = new Date(time)
       return formatDate(date, 'yyyy-MM-dd hh:mm')
     }

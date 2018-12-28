@@ -62,7 +62,7 @@ import BScroll from 'better-scroll'
 
 export default {
   name: 'ShoppingCart',
-  data() {
+  data () {
     return {
       balls: [
         {show: false},
@@ -79,13 +79,13 @@ export default {
   props: {
     seller: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     },
     selectFoods: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     }
@@ -94,21 +94,21 @@ export default {
     Cartcontrol
   },
   computed: {
-    totalPrice() {
+    totalPrice () {
       let total = 0
       this.selectFoods.forEach((food) => {
         total += food.price * food.count
       })
       return total
     },
-    totalCount() {
+    totalCount () {
       let count = 0
       this.selectFoods.forEach((food) => {
         count += food.count
       })
       return count
     },
-    payDesc() {
+    payDesc () {
       if (this.totalPrice === 0) {
         return `￥${this.seller.minPrice}元起送`
       } else if (this.totalPrice < this.seller.minPrice) {
@@ -119,10 +119,10 @@ export default {
       }
     },
     showFlag: {
-      get() {
+      get () {
         return this.fold
       },
-      set() {
+      set () {
         if (!this.totalCount) {
           this.fold = true
           return false
@@ -133,7 +133,7 @@ export default {
     }
   },
   methods: {
-    drop(el) {
+    drop (el) {
       this.balls.forEach((ball) => {
         ball.show = true
         ball.el = el
@@ -141,7 +141,7 @@ export default {
       })
     },
     // the transition has some problems to solve
-    beforeEnter(el) {
+    beforeEnter (el) {
       let count = this.balls.length
       while (count--) {
         let ball = this.balls[count]
@@ -157,7 +157,7 @@ export default {
         }
       }
     },
-    enter(el, done) {
+    enter (el, done) {
       /* eslint-disable no-unused-vars */
       let rf = el.offsetHeight
       this.$nextTick(() => {
@@ -168,14 +168,14 @@ export default {
       })
       el.addEventListener('transitionend', done)
     },
-    afterEnter(el) {
+    afterEnter (el) {
       let ball = this.dropBalls.shift()
       if (ball.show) {
         ball.show = false
         el.style.display = 'none'
       }
     },
-    toggleList() {
+    toggleList () {
       if (!this.totalCount) {
         return
       }
@@ -192,13 +192,13 @@ export default {
         })
       }
     },
-    empty() {
+    empty () {
       this.$emit('empty', this.selectFoods)
     },
-    hideList() {
+    hideList () {
       this.fold = false
     },
-    add(food) {
+    add (food) {
       let index = 0
       index = this.selectFoods.findIndex((item) => {
         return item.name === food.name
@@ -208,7 +208,7 @@ export default {
         this.selectFoods.splice(index + 1, 1)
       }
     },
-    decrease(food) {
+    decrease (food) {
       let index = 0
       index = this.selectFoods.findIndex((item) => {
         return item.name === food.name
@@ -222,13 +222,13 @@ export default {
         this.selectFoods.splice(index + 1, 1)
       }
     },
-    cartAdd(target) {
+    cartAdd (target) {
       // 体验优化，异步执行动画
       this.$nextTick(() => {
         this.drop(target)
       })
     },
-    pay() {
+    pay () {
       if (this.totalPrice < this.seller.minPrice) {
         return
       }
@@ -237,7 +237,7 @@ export default {
     }
   },
   watch: {
-    selectFoods() {
+    selectFoods () {
       if (!this.totalCount) {
         this.fold = false
         return

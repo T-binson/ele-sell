@@ -72,7 +72,7 @@ import Split from 'components/split/split'
 
 export default {
   name: 'seller',
-  data() {
+  data () {
     return {
       favorite: loadFromLocal(this.seller.id, 'favorite', false)
     }
@@ -80,19 +80,19 @@ export default {
   props: {
     seller: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     },
     shoppingCart: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     },
     emptyFoods: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     }
@@ -101,10 +101,10 @@ export default {
     Star,
     Split
   },
-  created() {
+  created () {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       if (!this.scroll) {
         this.scroll = new BScroll(this.$refs.seller, {
@@ -133,12 +133,12 @@ export default {
     }
   },
   computed: {
-    favoriteText() {
+    favoriteText () {
       return this.favorite ? '已收藏' : '收藏'
     }
   },
   methods: {
-    collect(event) {
+    collect (event) {
       if (!event._constructed) {
         return
       }

@@ -1,4 +1,4 @@
-export function formatDate(date, format) {
+export function formatDate (date, format) {
   if (/(y+)/.test(format)) {
     format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
   }
@@ -18,6 +18,6 @@ export function formatDate(date, format) {
   return format
 }
 
-function padZero(str) {
+function padZero (str) {
   return ('00' + str).substr(str.length)
 }

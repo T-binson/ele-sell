@@ -18,19 +18,19 @@ export default {
   props: {
     food: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     },
     emptyFoods: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     }
   },
   methods: {
-    addFood(event) {
+    addFood (event) {
       if (!event._constructed) {
         return
       }
@@ -42,7 +42,7 @@ export default {
       this.$emit('add', this.food)
       this.$emit('cartAdd', event.target)
     },
-    decreaseFood(event) {
+    decreaseFood (event) {
       if (!event._constructed) {
         return
       }
@@ -53,7 +53,7 @@ export default {
     }
   },
   watch: {
-    emptyFoods() {
+    emptyFoods () {
       // console.log(this.emptyFoods) ???
       this.emptyFoods.forEach((item) => {
         if (this.food.name === item.name && this.food.count > 0) {

@@ -30,7 +30,7 @@ const ERR_OK = 0
 
 export default {
   name: 'App',
-  data() {
+  data () {
     return {
       seller: {
         id: (() => {
@@ -47,7 +47,7 @@ export default {
     'v-header': VHeader,
     ShoppingCart
   },
-  created() {
+  created () {
     this.$http.get('/api/seller?id=' + this.seller.id).then(response => {
       if (response.body.errno === ERR_OK) {
         // this.seller = response.body.data
@@ -58,11 +58,11 @@ export default {
     })
   },
   methods: {
-    getFoods(foods) {
+    getFoods (foods) {
       this.selectFoods = foods
       this.shoppingCart = this.$refs.shoppingCart
     },
-    empty(foods) {
+    empty (foods) {
       // console.log(foods)
       this.selectFoods = []
       this.emptyFoods = foods.slice()

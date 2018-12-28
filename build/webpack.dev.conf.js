@@ -13,17 +13,15 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
-// custom mock local data
 const express = require('express')
+const apiRotes = express.Router()
 const app = express()
-const apiRoutes = express.Router()
-//local data
 let appData = require('../data.json')
 let seller = appData.seller
 let goods = appData.goods
 let ratings = appData.ratings
 
-app.use('/api', apiRoutes)
+app.use('/api', apiRotes)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -34,20 +32,20 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
-    before(apiRoutes) {
-      apiRoutes.get('/api/seller', (req, res) => {
+    before(apiRotes) {
+      apiRotes.get('/api/seller', (req, res) => {
         res.json({
           errno: 0,
           data: seller
         })
       }),
-      apiRoutes.get('/api/goods', (req, res) => {
+      apiRotes.get('/api/goods', (req, res) => {
         res.json({
           errno: 0,
           data: goods
         })
       }),
-      apiRoutes.get('/api/ratings', (req, res) => {
+      apiRotes.get('/api/ratings', (req, res) => {
         res.json({
           errno: 0,
           data: ratings

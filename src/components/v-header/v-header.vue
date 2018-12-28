@@ -82,7 +82,7 @@ export default {
   props: {
     seller: {
       type: Object,
-      default: () => {
+      default () {
         return {}
       }
     }
@@ -90,14 +90,14 @@ export default {
   components: {
     Star
   },
-  created() {
+  created () {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
   },
   methods: {
-    show() {
+    show () {
       this.detailsShow = true
     },
-    hide() {
+    hide () {
       this.detailsShow = false
     }
   }

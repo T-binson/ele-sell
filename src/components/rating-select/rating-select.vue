@@ -22,7 +22,7 @@ export default {
   props: {
     ratings: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     },
@@ -36,7 +36,7 @@ export default {
     },
     desc: {
       type: Object,
-      default() {
+      default () {
         return {
           all: '全部',
           positive: '满意',
@@ -46,25 +46,25 @@ export default {
     }
   },
   computed: {
-    positives() {
+    positives () {
       return this.ratings.filter((rating) => {
         return rating.rateType === POSITIVE
       })
     },
-    negatives() {
+    negatives () {
       return this.ratings.filter((rating) => {
         return rating.rateType === NEGATIVE
       })
     }
   },
   methods: {
-    select(type, event) {
+    select (type, event) {
       if (!event._constructed) {
         return
       }
       this.$emit('select', type)
     },
-    toggle(event) {
+    toggle (event) {
       if (!event._constructed) {
         return
       }

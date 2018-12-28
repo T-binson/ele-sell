@@ -51,7 +51,7 @@ const ERR_OK = 0
 
 export default {
   name: 'good',
-  data() {
+  data () {
     return {
       goods: [],
       listHeight: [],
@@ -63,19 +63,19 @@ export default {
   props: {
     seller: {
       type: Object,
-      default: () => {
+      default () {
         return {}
       }
     },
     shoppingCart: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     },
     emptyFoods: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     }
@@ -84,7 +84,7 @@ export default {
     CartControl,
     FoodDetail
   },
-  created() {
+  created () {
     this.$http.get('/api/goods').then(response => {
       if (response.body.errno === ERR_OK) {
         this.goods = response.body.data
@@ -97,7 +97,7 @@ export default {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
   },
   computed: {
-    currentIndex() {
+    currentIndex () {
       for (let i = 0, len = this.listHeight.length; i < len; i++) {
         if (this.listHeight[i + 1] && this.scrollY >= this.listHeight[i] && this.scrollY < this.listHeight[i + 1]) {
           return i
@@ -107,13 +107,13 @@ export default {
     }
   },
   methods: {
-    selectMenu(index, event) {
+    selectMenu (index, event) {
       if (!event._constructed) {
         return
       }
       this.foodsScroll.scrollToElement(this.$refs.foodList[index], 300)
     },
-    add(food) {
+    add (food) {
       let index = 0
       index = this.selectFoods.findIndex((item) => {
         return item.name === food.name
@@ -124,7 +124,7 @@ export default {
       this.selectFoods.push(food)
       this.$emit('foodsChange', this.selectFoods)
     },
-    decrease(food) {
+    decrease (food) {
       let index = 0
       index = this.selectFoods.findIndex((item) => {
         return item.name === food.name
@@ -139,20 +139,20 @@ export default {
       this.selectFoods.push(food)
       this.$emit('foodsChange', this.selectFoods)
     },
-    cartAdd(target) {
+    cartAdd (target) {
       // 体验优化，异步执行动画
       this.$nextTick(() => {
         this.shoppingCart.drop(target)
       })
     },
-    openFood(food, event) {
+    openFood (food, event) {
       if (!event._constructed) {
         return
       }
       this.foodDetails = food
       this.$refs.foodDetail.show()
     },
-    _initScroll() {
+    _initScroll () {
       this.menuScroll = new BScroll(this.$refs.menuWrapper, {
         click: true
       })
@@ -164,7 +164,7 @@ export default {
         this.scrollY = Math.abs(Math.round(pos.y))
       })
     },
-    _calculateHeight() {
+    _calculateHeight () {
       // the listHeight has some problems
       let height = 0
       this.listHeight.push(height)

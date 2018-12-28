@@ -63,7 +63,7 @@ const ALL = 2
 
 export default {
   name: 'food-detail',
-  data() {
+  data () {
     return {
       showFlag: false,
       selectType: ALL,
@@ -78,13 +78,13 @@ export default {
   props: {
     food: {
       type: Object,
-      default() {
+      default () {
         return {}
       }
     }
   },
   methods: {
-    show() {
+    show () {
       this.showFlag = true
       this.selectType = ALL
       this.onlyContent = false
@@ -98,11 +98,11 @@ export default {
         }
       })
     },
-    hide() {
+    hide () {
       this.showFlag = false
       this.onlyContent = false
     },
-    addFood(event) {
+    addFood (event) {
       if (!event._constructed) {
         return
       }
@@ -110,23 +110,23 @@ export default {
       this.$emit('add', this.food)
       this.$emit('cartAdd', event.target)
     },
-    cartAdd(target) {
+    cartAdd (target) {
       this.$emit('cartAdd', target)
     },
-    select(type) {
+    select (type) {
       this.selectType = type
       this.$nextTick(() => {
         this.scroll.refresh()
       })
     },
-    toggleContent(onlyContent) {
+    toggleContent (onlyContent) {
       this.onlyContent = !onlyContent
       this.$nextTick(() => {
         this.scroll.refresh()
       })
     }
     // 判断评价的显示
-    // contentShow(type, text) {
+    // contentShow (type, text) {
     //   if (this.onlyContent && !text) {
     //     return false
     //   }
@@ -138,7 +138,7 @@ export default {
     // }
   },
   filters: {
-    formatTime(time) {
+    formatTime (time) {
       let date = new Date(time)
       return formatDate(date, 'yyyy-MM-dd hh:mm')
     }

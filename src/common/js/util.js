@@ -5,7 +5,7 @@
 *@return Object {id: 123, a: x}
  */
 
-export function urlParse() {
+export function urlParse () {
   let paramStr = window.location.search
   let obj = {}
   let reg = /[?&][^?&]+=[^?&]+/g

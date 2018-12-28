@@ -12,7 +12,7 @@ const CLS_OFF = 'off'
 
 export default {
   name: 'star',
-  data() {
+  data () {
     return {}
   },
   props: {
@@ -24,10 +24,10 @@ export default {
     }
   },
   computed: {
-    starType() {
+    starType () {
       return 'star-' + this.size
     },
-    itemClasses() {
+    itemClasses () {
       let ret = []
       let score = Math.floor(this.score * 2) / 2
       let hasDecimal = score % 1 !== 0

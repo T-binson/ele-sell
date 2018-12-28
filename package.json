@@ -1,8 +1,8 @@
 {
-  "name": "ele-sell",
+  "name": "ele",
   "version": "1.0.0",
-  "description": "eleme takeway",
-  "author": "t-binson@outlook.com",
+  "description": "eleme web app",
+  "author": "t-binson",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -11,9 +11,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "better-scroll": "^1.12.6",
+    "better-scroll": "^1.13.2",
     "vue": "^2.5.2",
-    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -56,8 +55,9 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "uglifyjs-webpack-plugin": "^1.1.1",
-    "url-loader": "^1.0.1",
+    "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
+    "vue-resource": "^1.5.1",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",

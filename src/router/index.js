@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Good from 'components/good/good'
-import Rate from 'components/rate/rate'
-import Seller from 'components/seller/seller'
+import Good from '../components/good/good'
+import Rate from '../components/rate/rate'
+import Seller from '../components/seller/seller'
 
 Vue.use(Router)
 

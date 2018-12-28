@@ -1,6 +1,6 @@
-# ele-sell
+# ele
 
-> eleme takeway
+> eleme web app
 
 ## Build Setup
 
